@@ -1,0 +1,173 @@
+aid: uptime-com
+url: https://raw.githubusercontent.com/api-evangelist/uptime-com/refs/heads/main/apis.yml
+name: Uptime.com
+kind: company
+description: Uptime.com is a website, application, and infrastructure monitoring platform
+  providing uptime checks, transaction and API monitoring, page speed checks, SLA reporting,
+  status pages, and alerting from a global network of probe servers. Its REST API at
+  https://uptime.com/api/v1 (Token authentication) lets customers programmatically manage
+  checks, outages, SLA reports, status pages, contacts, integrations, and tags.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Monitoring
+- Uptime
+- Website Monitoring
+- Status Pages
+- SLA
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: uptime-com:checks-monitors
+  name: Uptime.com Checks & Monitors API
+  tags:
+  - Checks
+  - Monitors
+  - Uptime
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, pause, resume, and delete monitoring checks
+    including HTTP(S), API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware,
+    and group checks, plus probe-server location management.
+- aid: uptime-com:outages
+  name: Uptime.com Outages API
+  tags:
+  - Outages
+  - Incidents
+  - Downtime
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: List and retrieve detected outage records produced by checks, including
+    start/end timestamps, duration, the originating check, and resolution state.
+- aid: uptime-com:sla-reports
+  name: Uptime.com SLA Reports API
+  tags:
+  - SLA
+  - Reports
+  - Reporting
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete SLA reports that summarize uptime,
+    response time, and outage performance across selected checks and tags over a default
+    or custom reporting period.
+- aid: uptime-com:status-pages
+  name: Uptime.com Status Pages API
+  tags:
+  - Status Pages
+  - Incidents
+  - Components
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete public and private status pages
+    along with their components and incidents for communicating service health to users.
+- aid: uptime-com:contacts-integrations
+  name: Uptime.com Contacts & Integrations API
+  tags:
+  - Contacts
+  - Integrations
+  - Alerting
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: Manage contact groups (email, SMS, voice, on-call schedules) and notification
+    integrations (Slack, PagerDuty, Opsgenie, webhooks, and more) used to route check
+    and outage alerts.
+- aid: uptime-com:tags
+  name: Uptime.com Tags API
+  tags:
+  - Tags
+  - Labels
+  - Organization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://uptime.com/api/v1/docs/
+  baseURL: https://uptime.com/api/v1
+  properties:
+  - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+    type: Documentation
+  - url: https://uptime.com/api/v1/docs/
+    type: APIReference
+  - url: openapi/uptime-com-openapi.yml
+    type: OpenAPI
+  - url: collections/uptime-com.postman_collection.json
+    type: PostmanCollection
+  - url: collections/uptime-com.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete color-coded check tags used to
+    group and filter checks, SLA reports, and status pages across the account.
+common:
+- type: GitHubOrganization
+  url: https://github.com/uptime-com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/uptime-com
+- type: Website
+  url: https://uptime.com/
+- type: Documentation
+  url: https://uptime.com/api/v1/docs/
+- type: Plans
+  url: plans/uptime-com-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/uptime-com-rate-limits.yml
+- type: FinOps
+  url: finops/uptime-com-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,101 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Uptime.com
+providerId: uptime-com
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Monitoring
+- Uptime
+- Website Monitoring
+- Status Pages
+- SLA
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Uptime.com spend. Uptime.com bills a subscription priced by the
+  number and type of monitoring checks (uptime, transaction, API, page-speed),
+  with the Status Page module and Real User Monitoring sold as separate add-ons
+  and additional or private probe-server locations available as paid extras.
+  Subscriptions are billed monthly or annually (annual ~20% cheaper). Cost is
+  driven mainly by check count, check interval/type, and the optional modules
+  and locations enabled.
+notes: >-
+  Per-tier prices and check quotas are representative and not reconciled; verify
+  against the Uptime.com pricing page during reconciliation.
+sources:
+- https://uptime.com/pricing
+- https://support.uptime.com/hc/en-us/articles/360005012439-Overview-of-Subscriptions-Billing
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Uptime.com
+serviceCategory: Monitoring and Observability
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Uptime.com Monitoring
+  ServiceCategory: Monitoring and Observability
+  ProviderName: Uptime.com
+  PublisherName: Uptime.com
+  InvoiceIssuerName: Uptime.com
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: checks
+  description: Number of monitoring checks, the primary subscription cost driver, varying by check type and interval.
+  unit: checks
+  aggregation: max
+  dimensions:
+  - account
+  - check_type
+- name: status_pages
+  description: Status Page module subscription, billed as a separate add-on.
+  unit: subscription
+  aggregation: max
+  dimensions:
+  - account
+- name: rum
+  description: Real User Monitoring add-on subscription.
+  unit: subscription
+  aggregation: max
+  dimensions:
+  - account
+- name: probe_locations
+  description: Additional and private probe-server locations added to a plan.
+  unit: locations
+  aggregation: max
+  dimensions:
+  - account
+- name: sms_alerts
+  description: SMS alert notifications, which may incur usage charges depending on plan and volume.
+  unit: messages
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Review the subscription summary and check inventory in the Uptime.com account; track which checks and modules drive cost.
+- name: Allocation
+  description: Use tags and contact groups to map checks to teams, services, and cost centers.
+- name: Optimization
+  description: Pause or remove unused checks, widen intervals where appropriate, consolidate group checks, and only enable add-on modules (Status Pages, RUM, extra locations) where needed. Choose annual billing for ~20% savings.
+- name: Accountability
+  description: Assign owners per tag/service and review check count and module spend against budget each billing cycle.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

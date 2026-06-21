@@ -1,0 +1,467 @@
+{
+  "info": {
+    "_postman_id": "a1f2c3d4-uptime-com-0001-000000000001",
+    "name": "Uptime.com REST API",
+    "description": "Postman collection for the Uptime.com REST API (https://uptime.com/api/v1). Authenticate with an API token using the header `Authorization: Token {{apiToken}}`.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "Token {{apiToken}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://uptime.com/api/v1"
+    },
+    {
+      "key": "apiToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Checks",
+      "item": [
+        {
+          "name": "List all checks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/checks/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ""]
+            },
+            "description": "Returns a paginated list of the checks on the account."
+          }
+        },
+        {
+          "name": "Create an HTTP check",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"msp_address\": \"\",\n  \"msp_interval\": 5,\n  \"contact_groups\": [],\n  \"locations\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/checks/add-http/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", "add-http", ""]
+            },
+            "description": "Creates a new HTTP(S) uptime check."
+          }
+        },
+        {
+          "name": "Create an API/transaction check",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"msp_interval\": 5,\n  \"msp_script\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/checks/add-api/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", "add-api", ""]
+            },
+            "description": "Creates a multi-step API (transaction) check."
+          }
+        },
+        {
+          "name": "Retrieve a check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/checks/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Retrieves a single check by primary key."
+          }
+        },
+        {
+          "name": "Partially update a check",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"msp_interval\": 5\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/checks/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Partially updates a check."
+          }
+        },
+        {
+          "name": "Delete a check",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/checks/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Deletes a check."
+          }
+        },
+        {
+          "name": "Pause a check",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/checks/:pk/pause/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ":pk", "pause", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Pauses a check."
+          }
+        },
+        {
+          "name": "Resume a check",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/checks/:pk/resume/",
+              "host": ["{{baseUrl}}"],
+              "path": ["checks", ":pk", "resume", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Resumes a paused check."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Outages",
+      "item": [
+        {
+          "name": "List outages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/outages/",
+              "host": ["{{baseUrl}}"],
+              "path": ["outages", ""]
+            },
+            "description": "Returns a paginated list of detected outages."
+          }
+        },
+        {
+          "name": "Retrieve an outage",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/outages/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["outages", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Retrieves a single outage record."
+          }
+        }
+      ]
+    },
+    {
+      "name": "SLA Reports",
+      "item": [
+        {
+          "name": "List SLA reports",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sla/report/",
+              "host": ["{{baseUrl}}"],
+              "path": ["sla", "report", ""]
+            },
+            "description": "Lists SLA reports."
+          }
+        },
+        {
+          "name": "Create an SLA report",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"default_date_range\": \"30 days\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sla/report/",
+              "host": ["{{baseUrl}}"],
+              "path": ["sla", "report", ""]
+            },
+            "description": "Creates an SLA report."
+          }
+        },
+        {
+          "name": "Retrieve an SLA report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sla/report/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["sla", "report", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Retrieves an SLA report."
+          }
+        },
+        {
+          "name": "Delete an SLA report",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/sla/report/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["sla", "report", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Deletes an SLA report."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Status Pages",
+      "item": [
+        {
+          "name": "List status pages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/statuspages/",
+              "host": ["{{baseUrl}}"],
+              "path": ["statuspages", ""]
+            },
+            "description": "Lists status pages."
+          }
+        },
+        {
+          "name": "Create a status page",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/statuspages/",
+              "host": ["{{baseUrl}}"],
+              "path": ["statuspages", ""]
+            },
+            "description": "Creates a status page."
+          }
+        },
+        {
+          "name": "List status page incidents",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/statuspages/:statuspage_pk/incidents/",
+              "host": ["{{baseUrl}}"],
+              "path": ["statuspages", ":statuspage_pk", "incidents", ""],
+              "variable": [{ "key": "statuspage_pk", "value": "" }]
+            },
+            "description": "Lists incidents for a status page."
+          }
+        },
+        {
+          "name": "List status page components",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/statuspages/:statuspage_pk/components/",
+              "host": ["{{baseUrl}}"],
+              "path": ["statuspages", ":statuspage_pk", "components", ""],
+              "variable": [{ "key": "statuspage_pk", "value": "" }]
+            },
+            "description": "Lists components for a status page."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contacts",
+      "item": [
+        {
+          "name": "List contact groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/contact-groups/",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-groups", ""]
+            },
+            "description": "Lists contact groups."
+          }
+        },
+        {
+          "name": "Create a contact group",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"email_list\": []\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/contact-groups/",
+              "host": ["{{baseUrl}}"],
+              "path": ["contact-groups", ""]
+            },
+            "description": "Creates a contact group."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Integrations",
+      "item": [
+        {
+          "name": "List integrations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/integrations/",
+              "host": ["{{baseUrl}}"],
+              "path": ["integrations", ""]
+            },
+            "description": "Lists notification integrations."
+          }
+        },
+        {
+          "name": "Create an integration",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"module\": \"slack\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/integrations/",
+              "host": ["{{baseUrl}}"],
+              "path": ["integrations", ""]
+            },
+            "description": "Creates a notification integration."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tags",
+      "item": [
+        {
+          "name": "List check tags",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/check-tags/",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-tags", ""]
+            },
+            "description": "Lists check tags."
+          }
+        },
+        {
+          "name": "Create a check tag",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tag\": \"\",\n  \"color_hex\": \"#33cccc\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/check-tags/",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-tags", ""]
+            },
+            "description": "Creates a color-coded check tag."
+          }
+        },
+        {
+          "name": "Delete a check tag",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/check-tags/:pk/",
+              "host": ["{{baseUrl}}"],
+              "path": ["check-tags", ":pk", ""],
+              "variable": [{ "key": "pk", "value": "" }]
+            },
+            "description": "Deletes a check tag."
+          }
+        }
+      ]
+    }
+  ]
+}

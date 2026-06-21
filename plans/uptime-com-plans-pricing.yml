@@ -1,0 +1,136 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Uptime.com
+providerId: uptime-com
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Monitoring
+- Uptime
+- Website Monitoring
+- Status Pages
+- SLA
+- Plans
+description: >-
+  Uptime.com sells subscription monitoring built around modules. Website
+  Monitoring (uptime, transaction, API, and page-speed checks with SMS/email
+  alerting, SLA reporting, dashboards, and check history) starts in the
+  single-digit-dollars-per-month range, billed by the number and type of checks.
+  Real User Monitoring and the Status Page module are priced separately as
+  add-ons, and additional probe-server locations (including Private Locations)
+  can be added to most plans. Plans are billed monthly or annually, with annual
+  billing discounted roughly 20% (about two months free), and a 30-day
+  money-back guarantee. The REST API and API token access are available to paid
+  customers only. Exact per-tier prices and check quotas change frequently;
+  verify on the pricing page during reconciliation.
+notes: >-
+  Prices and check quotas below are representative figures drawn from the
+  Uptime.com pricing page and subscription documentation as of June 2026 and are
+  not reconciled. Uptime.com moved to a module/check-quota subscription model in
+  May 2025; confirm current numbers at https://uptime.com/pricing.
+sources:
+- https://uptime.com/pricing
+- https://support.uptime.com/hc/en-us/articles/360005012439-Overview-of-Subscriptions-Billing
+- https://uptime.com/api/v1/docs/
+plans:
+- id: uptime-com-website-monitoring
+  name: Website Monitoring
+  type: subscription
+  description: >-
+    Core monitoring subscription including uptime, transaction, API, and
+    page-speed checks, SMS and email alerting, 20+ integrations, maintenance
+    windows, SLA reporting, dashboards, and up to 24-month check history. Priced
+    by number and type of checks; starts in the single-digit-dollars-per-month
+    range and scales with quota.
+  entries:
+  - label: Website Monitoring Subscription
+    name: website_monitoring
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from ~$9/month (billed annually); scales by check count and type
+    userMultiplied: false
+  elements:
+  - name: Uptime Monitoring
+  - name: Transaction Monitoring
+  - name: API Monitoring
+  - name: Page Speed Monitoring
+  - name: SMS and Email Alerting
+  - name: SLA Reporting
+  - name: Dashboards
+  - name: Maintenance Windows
+  - name: REST API Access
+- id: uptime-com-status-pages
+  name: Status Page Module
+  type: subscription
+  description: >-
+    Public and private status pages with components, incidents, and subscriber
+    notifications. Priced separately as an add-on module.
+  entries:
+  - label: Status Page Module
+    name: status_pages
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from ~$19/month (add-on)
+    userMultiplied: false
+  elements:
+  - name: Public Status Pages
+  - name: Private Status Pages
+  - name: Components
+  - name: Incidents
+  - name: Subscriber Notifications
+- id: uptime-com-rum
+  name: Real User Monitoring
+  type: subscription
+  description: >-
+    Real User Monitoring add-on that captures real browser performance and Core
+    Web Vitals from end users. Priced separately as an add-on module.
+  entries:
+  - label: Real User Monitoring
+    name: rum
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: add-on; see pricing page
+    userMultiplied: false
+  elements:
+  - name: Core Web Vitals
+  - name: Real User Performance Data
+- id: uptime-com-enterprise
+  name: Enterprise / Custom
+  type: enterprise
+  description: >-
+    Custom tier for larger accounts needing higher check quotas, additional and
+    private probe locations, advanced security/compliance, and negotiated terms.
+    Contact Uptime.com sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Check Quotas
+  - name: Private Locations
+  - name: Advanced Security and Compliance
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

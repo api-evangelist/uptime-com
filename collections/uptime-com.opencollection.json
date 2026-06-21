@@ -1,0 +1,469 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "Token {{apiToken}}",
+      "in": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all checks.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/checks/"
+          },
+          "docs": "Returns a paginated list of the checks on the account."
+        },
+        {
+          "info": {
+            "name": "Create an HTTP check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/add-http/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\",\n  \"msp_address\": \"\",\n  \"msp_interval\": 5,\n  \"contact_groups\": [],\n  \"locations\": []\n}"
+            }
+          },
+          "docs": "Creates a new HTTP(S) uptime check."
+        },
+        {
+          "info": {
+            "name": "Create an API/transaction check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/add-api/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\",\n  \"msp_interval\": 5,\n  \"msp_script\": []\n}"
+            }
+          },
+          "docs": "Creates a multi-step API (transaction) check."
+        },
+        {
+          "info": {
+            "name": "Retrieve a check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the check."
+              }
+            ]
+          },
+          "docs": "Retrieves a single check by primary key."
+        },
+        {
+          "info": {
+            "name": "Partially update a check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the check."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{\n  \"msp_interval\": 5\n}"
+            }
+          },
+          "docs": "Partially updates a check."
+        },
+        {
+          "info": {
+            "name": "Delete a check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the check."
+              }
+            ]
+          },
+          "docs": "Deletes a check."
+        },
+        {
+          "info": {
+            "name": "Pause a check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/:pk/pause/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the check."
+              }
+            ]
+          },
+          "docs": "Pauses a check."
+        },
+        {
+          "info": {
+            "name": "Resume a check.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/:pk/resume/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the check."
+              }
+            ]
+          },
+          "docs": "Resumes a paused check."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Outages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List outages.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/outages/"
+          },
+          "docs": "Returns a paginated list of detected outages."
+        },
+        {
+          "info": {
+            "name": "Retrieve an outage.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/outages/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the outage."
+              }
+            ]
+          },
+          "docs": "Retrieves a single outage record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SLA Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SLA reports.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/sla/report/"
+          },
+          "docs": "Lists SLA reports."
+        },
+        {
+          "info": {
+            "name": "Create an SLA report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/sla/report/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\",\n  \"default_date_range\": \"30 days\"\n}"
+            }
+          },
+          "docs": "Creates an SLA report."
+        },
+        {
+          "info": {
+            "name": "Retrieve an SLA report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/sla/report/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the SLA report."
+              }
+            ]
+          },
+          "docs": "Retrieves an SLA report."
+        },
+        {
+          "info": {
+            "name": "Delete an SLA report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/sla/report/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the SLA report."
+              }
+            ]
+          },
+          "docs": "Deletes an SLA report."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Status Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List status pages.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/"
+          },
+          "docs": "Lists status pages."
+        },
+        {
+          "info": {
+            "name": "Create a status page.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/statuspages/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\"\n}"
+            }
+          },
+          "docs": "Creates a status page."
+        },
+        {
+          "info": {
+            "name": "List status page incidents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/incidents/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the status page."
+              }
+            ]
+          },
+          "docs": "Lists incidents for a status page."
+        },
+        {
+          "info": {
+            "name": "List status page components.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/components/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the status page."
+              }
+            ]
+          },
+          "docs": "Lists components for a status page."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contact groups.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/contact-groups/"
+          },
+          "docs": "Lists contact groups."
+        },
+        {
+          "info": {
+            "name": "Create a contact group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/contact-groups/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\",\n  \"email_list\": []\n}"
+            }
+          },
+          "docs": "Creates a contact group."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Integrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List integrations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/integrations/"
+          },
+          "docs": "Lists notification integrations."
+        },
+        {
+          "info": {
+            "name": "Create an integration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/integrations/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"\",\n  \"module\": \"slack\"\n}"
+            }
+          },
+          "docs": "Creates a notification integration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List check tags.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/check-tags/"
+          },
+          "docs": "Lists check tags."
+        },
+        {
+          "info": {
+            "name": "Create a check tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/check-tags/",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"tag\": \"\",\n  \"color_hex\": \"#33cccc\"\n}"
+            }
+          },
+          "docs": "Creates a color-coded check tag."
+        },
+        {
+          "info": {
+            "name": "Delete a check tag.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/check-tags/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key of the tag."
+              }
+            ]
+          },
+          "docs": "Deletes a check tag."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Uptime.com
+providerId: uptime-com
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: true
+tags:
+- Monitoring
+- Uptime
+- Website Monitoring
+- Status Pages
+- SLA
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Uptime.com REST API is rate-limited to a maximum of 500 calls per hour
+  and 60 calls per minute per account, with no daily or monthly usage caps.
+  Bulk endpoints are provided to help larger accounts stay within fair-use
+  limits and can query up to 250 checks per request. Requests that exceed the
+  limits receive an HTTP 429 response; clients should back off and retry.
+notes: >-
+  Limits are published in the Uptime.com REST API getting-started
+  documentation. Verify current values during reconciliation.
+sources:
+- https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+- https://uptime.com/api/v1/docs/
+responseCodes:
+  throttled: 429
+limits:
+- name: Calls Per Minute
+  scope: account
+  metric: requests
+  limit: 60
+  notes: Maximum of 60 API calls per minute per account.
+- name: Calls Per Hour
+  scope: account
+  metric: requests
+  limit: 500
+  notes: Maximum of 500 API calls per hour per account.
+- name: Daily / Monthly Usage
+  scope: account
+  metric: requests
+  limit: -1
+  notes: No daily or monthly usage limit is applied.
+- name: Bulk Endpoint Batch Size
+  scope: request
+  metric: checks
+  limit: 250
+  notes: Bulk endpoints can query up to 250 checks per request to help larger accounts stay within fair-use limits.
+policies:
+- name: Throttling Response
+  description: Requests beyond the per-minute or per-hour limit return HTTP 429.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and retry after the rate-limit window resets.
+- name: Bulk Operations
+  description: Use bulk endpoints (up to 250 checks per call) to reduce request volume on large accounts.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

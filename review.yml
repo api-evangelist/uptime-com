@@ -1,0 +1,73 @@
+aid: uptime-com
+name: Uptime.com
+review:
+  question: Does Uptime.com expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Per API Evangelist scope, HTTP Server-Sent Events (SSE) is in-scope for
+    AsyncAPI modeling and WebSocket surfaces are modeled when documented.
+    Uptime.com's public REST API at https://uptime.com/api/v1 does not document
+    any SSE or WebSocket streaming surface, so no AsyncAPI document was created.
+findings:
+  summary: |
+    Uptime.com does not publish a documented public WebSocket API. The platform
+    exposes a synchronous REST (HTTPS) API under https://uptime.com/api/v1 with
+    API token authentication, covering checks, outages, SLA reports, status
+    pages, contacts, integrations, and tags. Event delivery to customers is
+    handled through outbound notification integrations (email, SMS, voice,
+    Slack, PagerDuty, Opsgenie, and webhooks) rather than a client-facing
+    streaming socket. No realtime, bidirectional, or push WebSocket (ws:// or
+    wss://) endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://uptime.com/api/v1
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP webhook notifications via the integrations resource; not a client-consumed streaming API.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Uptime.com REST API reference or support documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://uptime.com/api/v1/checks/
+    - POST   https://uptime.com/api/v1/checks/add-http/
+    - POST   https://uptime.com/api/v1/checks/add-api/
+    - GET    https://uptime.com/api/v1/checks/{pk}/
+    - PATCH  https://uptime.com/api/v1/checks/{pk}/
+    - DELETE https://uptime.com/api/v1/checks/{pk}/
+    - POST   https://uptime.com/api/v1/checks/{pk}/pause/
+    - POST   https://uptime.com/api/v1/checks/{pk}/resume/
+    - GET    https://uptime.com/api/v1/outages/
+    - GET    https://uptime.com/api/v1/outages/{pk}/
+    - GET    https://uptime.com/api/v1/sla/report/
+    - POST   https://uptime.com/api/v1/sla/report/
+    - GET    https://uptime.com/api/v1/statuspages/
+    - POST   https://uptime.com/api/v1/statuspages/
+    - GET    https://uptime.com/api/v1/contact-groups/
+    - GET    https://uptime.com/api/v1/integrations/
+    - GET    https://uptime.com/api/v1/check-tags/
+    - POST   https://uptime.com/api/v1/check-tags/
+  sources:
+    - url: https://uptime.com/api/v1/docs/
+      type: APIReference
+      note: Browsable REST API reference (paid-account login required); all endpoints are HTTPS REST.
+    - url: https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API
+      type: Documentation
+      note: Documents token authentication, base URL, rate limits, and REST resources; no WebSocket mentioned.
+    - url: https://github.com/uptime-com/uptime-client-go
+      type: SDK
+      note: Official Go client; endpoint files map to REST resources (checks, outages, slareports, statuspages, contacts, integrations, tags). No socket transport.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface is documented. The catalog models the
+    documented REST API only; outbound webhook notifications are noted as a
+    transport but are not a client-consumed streaming API, so no AsyncAPI
+    document was authored.
