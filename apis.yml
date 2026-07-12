@@ -154,6 +154,10 @@ apis:
   description: Create, list, retrieve, update, and delete color-coded check tags used to
     group and filter checks, SLA reports, and status pages across the account.
 common:
+- type: DomainSecurity
+  url: security/uptime-com-domain-security.yml
+- type: Authentication
+  url: authentication/uptime-com-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/uptime-com
 - type: LinkedIn
@@ -168,6 +172,8 @@ common:
   url: rate-limits/uptime-com-rate-limits.yml
 - type: FinOps
   url: finops/uptime-com-finops.yml
+- url: https://uptime.com/blog/feed/
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/uptime-com-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: tokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`.
+    Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'
+  sources:
+  - openapi/uptime-com-openapi.yml
