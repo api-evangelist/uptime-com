@@ -154,6 +154,8 @@ apis:
   description: Create, list, retrieve, update, and delete color-coded check tags used to
     group and filter checks, SLA reports, and status pages across the account.
 common:
+- type: AgenticAccess
+  url: agentic-access/uptime-com-agentic-access.yml
 - type: DomainSecurity
   url: security/uptime-com-domain-security.yml
 - type: Authentication
