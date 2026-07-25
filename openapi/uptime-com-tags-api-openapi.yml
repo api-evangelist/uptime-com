@@ -1,0 +1,134 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST Checks Tags API
+  description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+- url: https://uptime.com/api/v1
+  description: Uptime.com REST API v1
+security:
+- tokenAuth: []
+tags:
+- name: Tags
+  description: Manage color-coded check tags.
+paths:
+  /check-tags/:
+    get:
+      operationId: listTags
+      tags:
+      - Tags
+      summary: List check tags
+      responses:
+        '200':
+          description: A list of tags.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagList'
+    post:
+      operationId: createTag
+      tags:
+      - Tags
+      summary: Create a check tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '201':
+          description: The created tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+  /check-tags/{pk}/:
+    get:
+      operationId: getTag
+      tags:
+      - Tags
+      summary: Retrieve a check tag
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+    patch:
+      operationId: updateTag
+      tags:
+      - Tags
+      summary: Update a check tag
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: The updated tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+    delete:
+      operationId: deleteTag
+      tags:
+      - Tags
+      summary: Delete a check tag
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The tag was deleted.
+components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  schemas:
+    TagList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Tag:
+      type: object
+      required:
+      - tag
+      properties:
+        pk:
+          type: integer
+        tag:
+          type: string
+        color_hex:
+          type: string
+          example: '#33cccc'
+        url:
+          type: string
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`. Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'

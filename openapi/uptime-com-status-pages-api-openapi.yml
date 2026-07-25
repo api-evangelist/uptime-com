@@ -1,0 +1,247 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST Checks Status Pages API
+  description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+- url: https://uptime.com/api/v1
+  description: Uptime.com REST API v1
+security:
+- tokenAuth: []
+tags:
+- name: Status Pages
+  description: Manage status pages, components, and incidents.
+paths:
+  /statuspages/:
+    get:
+      operationId: listStatusPages
+      tags:
+      - Status Pages
+      summary: List status pages
+      responses:
+        '200':
+          description: A list of status pages.
+    post:
+      operationId: createStatusPage
+      tags:
+      - Status Pages
+      summary: Create a status page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPage'
+      responses:
+        '201':
+          description: The created status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+  /statuspages/{pk}/:
+    get:
+      operationId: getStatusPage
+      tags:
+      - Status Pages
+      summary: Retrieve a status page
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+    patch:
+      operationId: updateStatusPage
+      tags:
+      - Status Pages
+      summary: Update a status page
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPage'
+      responses:
+        '200':
+          description: The updated status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+    delete:
+      operationId: deleteStatusPage
+      tags:
+      - Status Pages
+      summary: Delete a status page
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The status page was deleted.
+  /statuspages/{statuspage_pk}/incidents/:
+    get:
+      operationId: listStatusPageIncidents
+      tags:
+      - Status Pages
+      summary: List status page incidents
+      parameters:
+      - name: statuspage_pk
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of incidents.
+    post:
+      operationId: createStatusPageIncident
+      tags:
+      - Status Pages
+      summary: Create a status page incident
+      parameters:
+      - name: statuspage_pk
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPageIncident'
+      responses:
+        '201':
+          description: The created incident.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPageIncident'
+  /statuspages/{statuspage_pk}/components/:
+    get:
+      operationId: listStatusPageComponents
+      tags:
+      - Status Pages
+      summary: List status page components
+      parameters:
+      - name: statuspage_pk
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A list of components.
+    post:
+      operationId: createStatusPageComponent
+      tags:
+      - Status Pages
+      summary: Create a status page component
+      parameters:
+      - name: statuspage_pk
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPageComponent'
+      responses:
+        '201':
+          description: The created component.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPageComponent'
+components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  schemas:
+    StatusPageComponent:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        group:
+          type: boolean
+        is_group:
+          type: boolean
+        auto_status_down:
+          type: string
+        service:
+          type: integer
+    StatusPageIncident:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        incident_type:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        updates:
+          type: array
+          items:
+            type: object
+        affected_components:
+          type: array
+          items:
+            type: integer
+    StatusPage:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        company_website:
+          type: string
+        cname:
+          type: string
+        allow_subscriptions:
+          type: boolean
+        is_public:
+          type: boolean
+        slug:
+          type: string
+        page_type:
+          type: string
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`. Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'

@@ -1,0 +1,132 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST Checks Contacts API
+  description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+- url: https://uptime.com/api/v1
+  description: Uptime.com REST API v1
+security:
+- tokenAuth: []
+tags:
+- name: Contacts
+  description: Manage contact groups used for alert notifications.
+paths:
+  /contact-groups/:
+    get:
+      operationId: listContactGroups
+      tags:
+      - Contacts
+      summary: List contact groups
+      responses:
+        '200':
+          description: A list of contact groups.
+    post:
+      operationId: createContactGroup
+      tags:
+      - Contacts
+      summary: Create a contact group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '201':
+          description: The created contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+  /contact-groups/{pk}/:
+    get:
+      operationId: getContactGroup
+      tags:
+      - Contacts
+      summary: Retrieve a contact group
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    patch:
+      operationId: updateContactGroup
+      tags:
+      - Contacts
+      summary: Update a contact group
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '200':
+          description: The updated contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    delete:
+      operationId: deleteContactGroup
+      tags:
+      - Contacts
+      summary: Delete a contact group
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The contact group was deleted.
+components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  schemas:
+    ContactGroup:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        email_list:
+          type: array
+          items:
+            type: string
+        sms_list:
+          type: array
+          items:
+            type: string
+        phonecall_list:
+          type: array
+          items:
+            type: string
+        integrations:
+          type: array
+          items:
+            type: integer
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`. Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'

@@ -1,0 +1,133 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST Checks SLA Reports API
+  description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+- url: https://uptime.com/api/v1
+  description: Uptime.com REST API v1
+security:
+- tokenAuth: []
+tags:
+- name: SLA Reports
+  description: Create, list, update, and delete SLA reports.
+paths:
+  /sla/report/:
+    get:
+      operationId: listSlaReports
+      tags:
+      - SLA Reports
+      summary: List SLA reports
+      responses:
+        '200':
+          description: A list of SLA reports.
+    post:
+      operationId: createSlaReport
+      tags:
+      - SLA Reports
+      summary: Create an SLA report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlaReport'
+      responses:
+        '201':
+          description: The created SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+  /sla/report/{pk}/:
+    get:
+      operationId: getSlaReport
+      tags:
+      - SLA Reports
+      summary: Retrieve an SLA report
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+    patch:
+      operationId: updateSlaReport
+      tags:
+      - SLA Reports
+      summary: Update an SLA report
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlaReport'
+      responses:
+        '200':
+          description: The updated SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+    delete:
+      operationId: deleteSlaReport
+      tags:
+      - SLA Reports
+      summary: Delete an SLA report
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The SLA report was deleted.
+components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  schemas:
+    SlaReport:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        services_tags:
+          type: array
+          items:
+            type: string
+        services_selected:
+          type: array
+          items:
+            type: integer
+        default_date_range:
+          type: string
+          example: 30 days
+        uptime_section:
+          type: boolean
+        response_time_section:
+          type: boolean
+        is_private:
+          type: boolean
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`. Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'

@@ -1,0 +1,307 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST Checks API
+  description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+- url: https://uptime.com/api/v1
+  description: Uptime.com REST API v1
+security:
+- tokenAuth: []
+tags:
+- name: Checks
+  description: Create, list, update, pause, resume, and delete monitoring checks.
+paths:
+  /checks/:
+    get:
+      operationId: listChecks
+      tags:
+      - Checks
+      summary: List all checks
+      description: Returns a paginated list of the checks on the account.
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      - name: page_size
+        in: query
+        schema:
+          type: integer
+      - name: search
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A paginated list of checks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckList'
+  /checks/add-http/:
+    post:
+      operationId: createHttpCheck
+      tags:
+      - Checks
+      summary: Create an HTTP check
+      description: Creates a new HTTP(S) uptime check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpCheck'
+      responses:
+        '200':
+          description: The created check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+  /checks/add-api/:
+    post:
+      operationId: createApiCheck
+      tags:
+      - Checks
+      summary: Create an API/transaction check
+      description: Creates a multi-step API (transaction) check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiCheck'
+      responses:
+        '200':
+          description: The created check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+  /checks/{pk}/:
+    get:
+      operationId: getCheck
+      tags:
+      - Checks
+      summary: Retrieve a check
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+    patch:
+      operationId: updateCheck
+      tags:
+      - Checks
+      summary: Partially update a check
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpCheck'
+      responses:
+        '200':
+          description: The updated check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+    delete:
+      operationId: deleteCheck
+      tags:
+      - Checks
+      summary: Delete a check
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The check was deleted.
+  /checks/{pk}/pause/:
+    post:
+      operationId: pauseCheck
+      tags:
+      - Checks
+      summary: Pause a check
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The check was paused.
+  /checks/{pk}/resume/:
+    post:
+      operationId: resumeCheck
+      tags:
+      - Checks
+      summary: Resume a check
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The check was resumed.
+  /checks/{pk}/stats/:
+    get:
+      operationId: getCheckStats
+      tags:
+      - Checks
+      summary: Retrieve check statistics
+      description: Returns uptime and response-time statistics for a check.
+      parameters:
+      - $ref: '#/components/parameters/Pk'
+      - name: start_date
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: end_date
+        in: query
+        schema:
+          type: string
+          format: date
+      responses:
+        '200':
+          description: Check statistics.
+components:
+  schemas:
+    Check:
+      type: object
+      properties:
+        pk:
+          type: integer
+        url:
+          type: string
+        name:
+          type: string
+        check_type:
+          type: string
+          example: HTTP
+        msp_address:
+          type: string
+        msp_interval:
+          type: integer
+        is_paused:
+          type: boolean
+        state:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+    CheckEnvelope:
+      type: object
+      properties:
+        messages:
+          type: object
+        results:
+          $ref: '#/components/schemas/Check'
+    HttpCheck:
+      type: object
+      required:
+      - name
+      - msp_address
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+          description: Check interval in minutes.
+        msp_address:
+          type: string
+          description: The URL or host to monitor.
+        msp_port:
+          type: integer
+        msp_send_string:
+          type: string
+        msp_expect_string:
+          type: string
+        msp_encryption:
+          type: string
+        msp_threshold:
+          type: integer
+        msp_status_code:
+          type: string
+        msp_use_ip_version:
+          type: string
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
+    ApiCheck:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'API token authentication. Pass the header as `Authorization: Token your_api_token`. Tokens are generated from Settings > API in the Uptime.com app and require a paid account.'
