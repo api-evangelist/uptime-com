@@ -1,0 +1,982 @@
+openapi: 3.0.1
+info:
+  title: Uptime.com REST API
+  description: >-
+    The Uptime.com REST API provides programmatic access to the Uptime.com website,
+    application, and infrastructure monitoring platform. It covers monitoring checks
+    (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group
+    checks), detected outages, SLA reports, status pages with components and incidents,
+    contact groups, notification integrations, and check tags. All requests are
+    authenticated with an API token passed in the Authorization header.
+  termsOfService: https://uptime.com/terms-of-use
+  contact:
+    name: Uptime.com Support
+    url: https://support.uptime.com/
+    email: support@uptime.com
+  version: '1.0'
+servers:
+  - url: https://uptime.com/api/v1
+    description: Uptime.com REST API v1
+security:
+  - tokenAuth: []
+tags:
+  - name: Checks
+    description: Create, list, update, pause, resume, and delete monitoring checks.
+  - name: Outages
+    description: List and retrieve detected outage records.
+  - name: SLA Reports
+    description: Create, list, update, and delete SLA reports.
+  - name: Status Pages
+    description: Manage status pages, components, and incidents.
+  - name: Contacts
+    description: Manage contact groups used for alert notifications.
+  - name: Integrations
+    description: Manage notification integrations.
+  - name: Tags
+    description: Manage color-coded check tags.
+paths:
+  /checks/:
+    get:
+      operationId: listChecks
+      tags:
+        - Checks
+      summary: List all checks
+      description: Returns a paginated list of the checks on the account.
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of checks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckList'
+  /checks/add-http/:
+    post:
+      operationId: createHttpCheck
+      tags:
+        - Checks
+      summary: Create an HTTP check
+      description: Creates a new HTTP(S) uptime check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpCheck'
+      responses:
+        '200':
+          description: The created check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+  /checks/add-api/:
+    post:
+      operationId: createApiCheck
+      tags:
+        - Checks
+      summary: Create an API/transaction check
+      description: Creates a multi-step API (transaction) check.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiCheck'
+      responses:
+        '200':
+          description: The created check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+  /checks/{pk}/:
+    get:
+      operationId: getCheck
+      tags:
+        - Checks
+      summary: Retrieve a check
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+    patch:
+      operationId: updateCheck
+      tags:
+        - Checks
+      summary: Partially update a check
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpCheck'
+      responses:
+        '200':
+          description: The updated check.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckEnvelope'
+    delete:
+      operationId: deleteCheck
+      tags:
+        - Checks
+      summary: Delete a check
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The check was deleted.
+  /checks/{pk}/pause/:
+    post:
+      operationId: pauseCheck
+      tags:
+        - Checks
+      summary: Pause a check
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The check was paused.
+  /checks/{pk}/resume/:
+    post:
+      operationId: resumeCheck
+      tags:
+        - Checks
+      summary: Resume a check
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The check was resumed.
+  /checks/{pk}/stats/:
+    get:
+      operationId: getCheckStats
+      tags:
+        - Checks
+      summary: Retrieve check statistics
+      description: Returns uptime and response-time statistics for a check.
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Check statistics.
+  /outages/:
+    get:
+      operationId: listOutages
+      tags:
+        - Outages
+      summary: List outages
+      description: Returns a paginated list of detected outages.
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+        - name: check
+          in: query
+          description: Filter outages by check primary key.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A paginated list of outages.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OutageList'
+  /outages/{pk}/:
+    get:
+      operationId: getOutage
+      tags:
+        - Outages
+      summary: Retrieve an outage
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested outage.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outage'
+  /sla/report/:
+    get:
+      operationId: listSlaReports
+      tags:
+        - SLA Reports
+      summary: List SLA reports
+      responses:
+        '200':
+          description: A list of SLA reports.
+    post:
+      operationId: createSlaReport
+      tags:
+        - SLA Reports
+      summary: Create an SLA report
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlaReport'
+      responses:
+        '201':
+          description: The created SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+  /sla/report/{pk}/:
+    get:
+      operationId: getSlaReport
+      tags:
+        - SLA Reports
+      summary: Retrieve an SLA report
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+    patch:
+      operationId: updateSlaReport
+      tags:
+        - SLA Reports
+      summary: Update an SLA report
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlaReport'
+      responses:
+        '200':
+          description: The updated SLA report.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlaReport'
+    delete:
+      operationId: deleteSlaReport
+      tags:
+        - SLA Reports
+      summary: Delete an SLA report
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The SLA report was deleted.
+  /statuspages/:
+    get:
+      operationId: listStatusPages
+      tags:
+        - Status Pages
+      summary: List status pages
+      responses:
+        '200':
+          description: A list of status pages.
+    post:
+      operationId: createStatusPage
+      tags:
+        - Status Pages
+      summary: Create a status page
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPage'
+      responses:
+        '201':
+          description: The created status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+  /statuspages/{pk}/:
+    get:
+      operationId: getStatusPage
+      tags:
+        - Status Pages
+      summary: Retrieve a status page
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+    patch:
+      operationId: updateStatusPage
+      tags:
+        - Status Pages
+      summary: Update a status page
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPage'
+      responses:
+        '200':
+          description: The updated status page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPage'
+    delete:
+      operationId: deleteStatusPage
+      tags:
+        - Status Pages
+      summary: Delete a status page
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The status page was deleted.
+  /statuspages/{statuspage_pk}/incidents/:
+    get:
+      operationId: listStatusPageIncidents
+      tags:
+        - Status Pages
+      summary: List status page incidents
+      parameters:
+        - name: statuspage_pk
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of incidents.
+    post:
+      operationId: createStatusPageIncident
+      tags:
+        - Status Pages
+      summary: Create a status page incident
+      parameters:
+        - name: statuspage_pk
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPageIncident'
+      responses:
+        '201':
+          description: The created incident.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPageIncident'
+  /statuspages/{statuspage_pk}/components/:
+    get:
+      operationId: listStatusPageComponents
+      tags:
+        - Status Pages
+      summary: List status page components
+      parameters:
+        - name: statuspage_pk
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A list of components.
+    post:
+      operationId: createStatusPageComponent
+      tags:
+        - Status Pages
+      summary: Create a status page component
+      parameters:
+        - name: statuspage_pk
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StatusPageComponent'
+      responses:
+        '201':
+          description: The created component.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusPageComponent'
+  /contact-groups/:
+    get:
+      operationId: listContactGroups
+      tags:
+        - Contacts
+      summary: List contact groups
+      responses:
+        '200':
+          description: A list of contact groups.
+    post:
+      operationId: createContactGroup
+      tags:
+        - Contacts
+      summary: Create a contact group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '201':
+          description: The created contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+  /contact-groups/{pk}/:
+    get:
+      operationId: getContactGroup
+      tags:
+        - Contacts
+      summary: Retrieve a contact group
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    patch:
+      operationId: updateContactGroup
+      tags:
+        - Contacts
+      summary: Update a contact group
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroup'
+      responses:
+        '200':
+          description: The updated contact group.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    delete:
+      operationId: deleteContactGroup
+      tags:
+        - Contacts
+      summary: Delete a contact group
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The contact group was deleted.
+  /integrations/:
+    get:
+      operationId: listIntegrations
+      tags:
+        - Integrations
+      summary: List integrations
+      responses:
+        '200':
+          description: A list of notification integrations.
+    post:
+      operationId: createIntegration
+      tags:
+        - Integrations
+      summary: Create an integration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Integration'
+      responses:
+        '201':
+          description: The created integration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+  /integrations/{pk}/:
+    get:
+      operationId: getIntegration
+      tags:
+        - Integrations
+      summary: Retrieve an integration
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested integration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+    delete:
+      operationId: deleteIntegration
+      tags:
+        - Integrations
+      summary: Delete an integration
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The integration was deleted.
+  /check-tags/:
+    get:
+      operationId: listTags
+      tags:
+        - Tags
+      summary: List check tags
+      responses:
+        '200':
+          description: A list of tags.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagList'
+    post:
+      operationId: createTag
+      tags:
+        - Tags
+      summary: Create a check tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '201':
+          description: The created tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+  /check-tags/{pk}/:
+    get:
+      operationId: getTag
+      tags:
+        - Tags
+      summary: Retrieve a check tag
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '200':
+          description: The requested tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+    patch:
+      operationId: updateTag
+      tags:
+        - Tags
+      summary: Update a check tag
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          description: The updated tag.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+    delete:
+      operationId: deleteTag
+      tags:
+        - Tags
+      summary: Delete a check tag
+      parameters:
+        - $ref: '#/components/parameters/Pk'
+      responses:
+        '204':
+          description: The tag was deleted.
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        API token authentication. Pass the header as
+        `Authorization: Token your_api_token`. Tokens are generated from
+        Settings > API in the Uptime.com app and require a paid account.
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
+  schemas:
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
+    CheckEnvelope:
+      type: object
+      properties:
+        messages:
+          type: object
+        results:
+          $ref: '#/components/schemas/Check'
+    Check:
+      type: object
+      properties:
+        pk:
+          type: integer
+        url:
+          type: string
+        name:
+          type: string
+        check_type:
+          type: string
+          example: HTTP
+        msp_address:
+          type: string
+        msp_interval:
+          type: integer
+        is_paused:
+          type: boolean
+        state:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+    HttpCheck:
+      type: object
+      required:
+        - name
+        - msp_address
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+          description: Check interval in minutes.
+        msp_address:
+          type: string
+          description: The URL or host to monitor.
+        msp_port:
+          type: integer
+        msp_send_string:
+          type: string
+        msp_expect_string:
+          type: string
+        msp_encryption:
+          type: string
+        msp_threshold:
+          type: integer
+        msp_status_code:
+          type: string
+        msp_use_ip_version:
+          type: string
+    ApiCheck:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
+    OutageList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type: string
+          nullable: true
+        previous:
+          type: string
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outage'
+    Outage:
+      type: object
+      properties:
+        pk:
+          type: integer
+        check:
+          type: integer
+        check_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        resolved_at:
+          type: string
+          format: date-time
+          nullable: true
+        duration:
+          type: integer
+          description: Outage duration in seconds.
+        ignored:
+          type: boolean
+        num_locations_failed:
+          type: integer
+    SlaReport:
+      type: object
+      required:
+        - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        services_tags:
+          type: array
+          items:
+            type: string
+        services_selected:
+          type: array
+          items:
+            type: integer
+        default_date_range:
+          type: string
+          example: 30 days
+        uptime_section:
+          type: boolean
+        response_time_section:
+          type: boolean
+        is_private:
+          type: boolean
+    StatusPage:
+      type: object
+      required:
+        - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        company_website:
+          type: string
+        cname:
+          type: string
+        allow_subscriptions:
+          type: boolean
+        is_public:
+          type: boolean
+        slug:
+          type: string
+        page_type:
+          type: string
+    StatusPageComponent:
+      type: object
+      required:
+        - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        group:
+          type: boolean
+        is_group:
+          type: boolean
+        auto_status_down:
+          type: string
+        service:
+          type: integer
+    StatusPageIncident:
+      type: object
+      required:
+        - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        incident_type:
+          type: string
+        starts_at:
+          type: string
+          format: date-time
+        updates:
+          type: array
+          items:
+            type: object
+        affected_components:
+          type: array
+          items:
+            type: integer
+    ContactGroup:
+      type: object
+      required:
+        - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        email_list:
+          type: array
+          items:
+            type: string
+        sms_list:
+          type: array
+          items:
+            type: string
+        phonecall_list:
+          type: array
+          items:
+            type: string
+        integrations:
+          type: array
+          items:
+            type: integer
+    Integration:
+      type: object
+      required:
+        - name
+        - module
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        module:
+          type: string
+          description: Integration type, e.g. slack, pagerduty, opsgenie, webhook.
+        contact_groups:
+          type: array
+          items:
+            type: string
+        url:
+          type: string
+    TagList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Tag:
+      type: object
+      required:
+        - tag
+      properties:
+        pk:
+          type: integer
+        tag:
+          type: string
+        color_hex:
+          type: string
+          example: '#33cccc'
+        url:
+          type: string

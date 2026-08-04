@@ -1,0 +1,26 @@
+{
+  "provider": "uptime-com",
+  "sources": [
+    "uptime-com-checks-api-openapi.yml",
+    "uptime-com-contacts-api-openapi.yml",
+    "uptime-com-integrations-api-openapi.yml",
+    "uptime-com-outages-api-openapi.yml",
+    "uptime-com-sla-reports-api-openapi.yml",
+    "uptime-com-status-pages-api-openapi.yml",
+    "uptime-com-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "uptime-com-checks-api-openapi.yml",
+    "uptime-com-contacts-api-openapi.yml",
+    "uptime-com-integrations-api-openapi.yml",
+    "uptime-com-outages-api-openapi.yml",
+    "uptime-com-sla-reports-api-openapi.yml",
+    "uptime-com-status-pages-api-openapi.yml",
+    "uptime-com-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
