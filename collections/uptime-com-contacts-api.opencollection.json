@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST Checks Contacts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List contact groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/contact-groups/"
+          },
+          "docs": "List contact groups"
+        },
+        {
+          "info": {
+            "name": "Create a contact group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/contact-groups/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a contact group"
+        },
+        {
+          "info": {
+            "name": "Retrieve a contact group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/contact-groups/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieve a contact group"
+        },
+        {
+          "info": {
+            "name": "Update a contact group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/contact-groups/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a contact group"
+        },
+        {
+          "info": {
+            "name": "Delete a contact group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/contact-groups/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Delete a contact group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

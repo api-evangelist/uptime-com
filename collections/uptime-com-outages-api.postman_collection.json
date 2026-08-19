@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "c4fde8ba-6c77-4816-81c6-aaacd6d09174",
+      "name": "Outages",
+      "description": {
+        "content": "List and retrieve detected outage records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e397004-47c2-44a2-b04c-c18da1f78981",
+          "name": "List outages",
+          "request": {
+            "name": "List outages",
+            "description": {
+              "content": "Returns a paginated list of detected outages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "outages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "check",
+                  "value": "<integer>",
+                  "description": "Filter outages by check primary key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "810d95cf-c194-4022-a31c-c2a5c29dbeef",
+              "name": "A paginated list of outages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "check",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 915,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"pk\": 6365,\n      \"check\": 9321,\n      \"check_name\": \"string\",\n      \"created_at\": \"2012-05-10T02:10:59.605Z\",\n      \"resolved_at\": \"2010-04-01T11:26:50.821Z\",\n      \"duration\": 6680,\n      \"ignored\": true,\n      \"num_locations_failed\": 3872\n    },\n    {\n      \"pk\": 2139,\n      \"check\": 6272,\n      \"check_name\": \"string\",\n      \"created_at\": \"1962-03-31T17:13:26.304Z\",\n      \"resolved_at\": \"1973-09-24T12:01:19.055Z\",\n      \"duration\": 1931,\n      \"ignored\": true,\n      \"num_locations_failed\": 9692\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c32cab1f-a667-4583-84a6-7341e47ea887",
+          "name": "Retrieve an outage",
+          "request": {
+            "name": "Retrieve an outage",
+            "description": {},
+            "url": {
+              "path": [
+                "outages",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8199d1b3-4e83-4bd7-b317-d554e2776f79",
+              "name": "The requested outage.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "outages",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pk\": 9060,\n  \"check\": 3140,\n  \"check_name\": \"string\",\n  \"created_at\": \"2010-01-30T04:24:12.916Z\",\n  \"resolved_at\": \"2016-02-25T03:14:26.664Z\",\n  \"duration\": 1352,\n  \"ignored\": true,\n  \"num_locations_failed\": 1850\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uptime.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "588bf3ca-2d13-4e16-9918-fda6d6f760ad",
+    "name": "Uptime.com REST Checks Outages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.\n\nContact Support:\n Name: Uptime.com Support\n Email: support@uptime.com",
+      "type": "text/plain"
+    }
+  }
+}

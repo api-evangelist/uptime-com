@@ -1,0 +1,520 @@
+{
+  "item": [
+    {
+      "id": "26f2c323-b237-44bd-8bfb-81752f28cc6b",
+      "name": "SLA Reports",
+      "description": {
+        "content": "Create, list, update, and delete SLA reports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c79dcb1d-e828-4815-b5ce-5df49973d3e7",
+          "name": "List SLA reports",
+          "request": {
+            "name": "List SLA reports",
+            "description": {},
+            "url": {
+              "path": [
+                "sla",
+                "report",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51388392-f51f-468b-9809-05c366bab027",
+              "name": "A list of SLA reports.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sla",
+                    "report",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0fa5bc9-4983-49e4-a1b1-90fce76d7f40",
+          "name": "Create an SLA report",
+          "request": {
+            "name": "Create an SLA report",
+            "description": {},
+            "url": {
+              "path": [
+                "sla",
+                "report",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"<string>\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0cb8c8e0-0953-4cad-92f2-b86a7754a036",
+              "name": "The created SLA report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sla",
+                    "report",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"30 days\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"30 days\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "580d4385-a69d-4495-b0fb-dcde50401968",
+          "name": "Retrieve an SLA report",
+          "request": {
+            "name": "Retrieve an SLA report",
+            "description": {},
+            "url": {
+              "path": [
+                "sla",
+                "report",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42a1f200-f6bf-405c-8621-127a8967cf35",
+              "name": "The requested SLA report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sla",
+                    "report",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"30 days\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b26292d-0b8a-4bbd-83a1-cd3e309e9242",
+          "name": "Update an SLA report",
+          "request": {
+            "name": "Update an SLA report",
+            "description": {},
+            "url": {
+              "path": [
+                "sla",
+                "report",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"<string>\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff44d1a5-fd94-45eb-acf3-de3e845d6fce",
+              "name": "The updated SLA report.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sla",
+                    "report",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"30 days\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"services_tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"services_selected\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"default_date_range\": \"30 days\",\n  \"uptime_section\": \"<boolean>\",\n  \"response_time_section\": \"<boolean>\",\n  \"is_private\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0e4d7ca-8e48-42d5-a742-7127f9ea8c97",
+          "name": "Delete an SLA report",
+          "request": {
+            "name": "Delete an SLA report",
+            "description": {},
+            "url": {
+              "path": [
+                "sla",
+                "report",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5bd6173e-0f35-4b94-abdb-a9cc09a861b7",
+              "name": "The SLA report was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sla",
+                    "report",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uptime.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "115b412e-81a9-4ace-a62d-3e02483e451b",
+    "name": "Uptime.com REST Checks SLA Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.\n\nContact Support:\n Name: Uptime.com Support\n Email: support@uptime.com",
+      "type": "text/plain"
+    }
+  }
+}

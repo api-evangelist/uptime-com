@@ -1,0 +1,920 @@
+{
+  "item": [
+    {
+      "id": "0e3aaf1e-5ef6-4a0e-b35e-d541e943b607",
+      "name": "Status Pages",
+      "description": {
+        "content": "Manage status pages, components, and incidents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c713013c-a4e0-4de3-8efc-f8caa8fa6bdb",
+          "name": "List status pages",
+          "request": {
+            "name": "List status pages",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "838b9431-6c4f-4eff-b1ea-05a04e33dd97",
+              "name": "A list of status pages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bda59bf2-445c-41b2-a926-c66f4ac3fb49",
+          "name": "Create a status page",
+          "request": {
+            "name": "Create a status page",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a140f0c-d95a-4ebb-a3d9-bcdd300c9b34",
+              "name": "The created status page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6bd0ec6-a772-405e-a7c5-70bffc91dc3b",
+          "name": "Retrieve a status page",
+          "request": {
+            "name": "Retrieve a status page",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fefa4e3-cd6e-419c-8b4e-be39f8e27dfd",
+              "name": "The requested status page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31c0592b-d721-49d5-984e-3dbc666b644d",
+          "name": "Update a status page",
+          "request": {
+            "name": "Update a status page",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c7d3a7d5-cb4d-46f1-a39b-4108e2180196",
+              "name": "The updated status page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"company_website\": \"<string>\",\n  \"cname\": \"<string>\",\n  \"allow_subscriptions\": \"<boolean>\",\n  \"is_public\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"page_type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b88916c0-0e8b-4c68-8548-8324e3fcae41",
+          "name": "Delete a status page",
+          "request": {
+            "name": "Delete a status page",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4c96755-55c6-4ee3-b26d-4a48dc7a7a93",
+              "name": "The status page was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcc81e62-9515-415b-89df-19ad8c055a38",
+          "name": "List status page incidents",
+          "request": {
+            "name": "List status page incidents",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":statuspage_pk",
+                "incidents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "statuspage_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06ff356f-68ef-4833-97a9-f11908a4cf32",
+              "name": "A list of incidents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":statuspage_pk",
+                    "incidents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "statuspage_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e392ac6f-af74-4016-bc6c-bb862520c3a1",
+          "name": "Create a status page incident",
+          "request": {
+            "name": "Create a status page incident",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":statuspage_pk",
+                "incidents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "statuspage_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"incident_type\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"updates\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"affected_components\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d24bb3a-ea60-4f06-b079-304f057ca2b0",
+              "name": "The created incident.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":statuspage_pk",
+                    "incidents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "statuspage_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"incident_type\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"updates\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"affected_components\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"incident_type\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"updates\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"affected_components\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab29251-b9cc-483a-92ae-4a08147f3ada",
+          "name": "List status page components",
+          "request": {
+            "name": "List status page components",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":statuspage_pk",
+                "components",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "statuspage_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7dfe7c77-d46b-4712-8040-2bc6b73f8050",
+              "name": "A list of components.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":statuspage_pk",
+                    "components",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "statuspage_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99912b65-1fa8-4186-a321-aacfa971aacf",
+          "name": "Create a status page component",
+          "request": {
+            "name": "Create a status page component",
+            "description": {},
+            "url": {
+              "path": [
+                "statuspages",
+                ":statuspage_pk",
+                "components",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "statuspage_pk",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"group\": \"<boolean>\",\n  \"is_group\": \"<boolean>\",\n  \"auto_status_down\": \"<string>\",\n  \"service\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc6e6d21-ffcf-4b0d-a1f3-44324cbad792",
+              "name": "The created component.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "statuspages",
+                    ":statuspage_pk",
+                    "components",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "statuspage_pk",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"group\": \"<boolean>\",\n  \"is_group\": \"<boolean>\",\n  \"auto_status_down\": \"<string>\",\n  \"service\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"description\": \"<string>\",\n  \"group\": \"<boolean>\",\n  \"is_group\": \"<boolean>\",\n  \"auto_status_down\": \"<string>\",\n  \"service\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uptime.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a15d40fd-a4b2-4fc5-97bf-86cd05ee74c3",
+    "name": "Uptime.com REST Checks Status Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.\n\nContact Support:\n Name: Uptime.com Support\n Email: support@uptime.com",
+      "type": "text/plain"
+    }
+  }
+}

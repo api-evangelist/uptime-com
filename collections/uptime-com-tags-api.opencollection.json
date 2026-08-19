@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST Checks Tags API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List check tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/check-tags/"
+          },
+          "docs": "List check tags"
+        },
+        {
+          "info": {
+            "name": "Create a check tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/check-tags/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a check tag"
+        },
+        {
+          "info": {
+            "name": "Retrieve a check tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/check-tags/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieve a check tag"
+        },
+        {
+          "info": {
+            "name": "Update a check tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/check-tags/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a check tag"
+        },
+        {
+          "info": {
+            "name": "Delete a check tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/check-tags/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Delete a check tag"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

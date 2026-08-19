@@ -1,0 +1,212 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST Checks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/checks/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of the checks on the account."
+        },
+        {
+          "info": {
+            "name": "Create an HTTP check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/add-http/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new HTTP(S) uptime check."
+        },
+        {
+          "info": {
+            "name": "Create an API/transaction check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/add-api/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a multi-step API (transaction) check."
+        },
+        {
+          "info": {
+            "name": "Retrieve a check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieve a check"
+        },
+        {
+          "info": {
+            "name": "Partially update a check",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially update a check"
+        },
+        {
+          "info": {
+            "name": "Delete a check",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/checks/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Delete a check"
+        },
+        {
+          "info": {
+            "name": "Pause a check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/:pk/pause/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Pause a check"
+        },
+        {
+          "info": {
+            "name": "Resume a check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/checks/:pk/resume/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Resume a check"
+        },
+        {
+          "info": {
+            "name": "Retrieve check statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/checks/:pk/stats/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns uptime and response-time statistics for a check."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

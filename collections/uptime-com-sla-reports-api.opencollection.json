@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST Checks SLA Reports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SLA Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SLA reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/sla/report/"
+          },
+          "docs": "List SLA reports"
+        },
+        {
+          "info": {
+            "name": "Create an SLA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/sla/report/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an SLA report"
+        },
+        {
+          "info": {
+            "name": "Retrieve an SLA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/sla/report/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieve an SLA report"
+        },
+        {
+          "info": {
+            "name": "Update an SLA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/sla/report/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an SLA report"
+        },
+        {
+          "info": {
+            "name": "Delete an SLA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/sla/report/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Delete an SLA report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

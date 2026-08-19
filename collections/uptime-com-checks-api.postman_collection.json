@@ -1,0 +1,944 @@
+{
+  "item": [
+    {
+      "id": "12be5eb5-af9e-4a35-b3e1-d783780b1c79",
+      "name": "Checks",
+      "description": {
+        "content": "Create, list, update, pause, resume, and delete monitoring checks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f1f94e7-4a3c-46d1-bceb-10aaac70cbb2",
+          "name": "List all checks",
+          "request": {
+            "name": "List all checks",
+            "description": {
+              "content": "Returns a paginated list of the checks on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2840bbf0-eabb-4d5a-b5a4-7170eb048283",
+              "name": "A paginated list of checks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 3733,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"pk\": 745,\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"check_type\": \"HTTP\",\n      \"msp_address\": \"string\",\n      \"msp_interval\": 3094,\n      \"is_paused\": false,\n      \"state\": \"string\",\n      \"contact_groups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"locations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"pk\": 29,\n      \"url\": \"string\",\n      \"name\": \"string\",\n      \"check_type\": \"HTTP\",\n      \"msp_address\": \"string\",\n      \"msp_interval\": 6738,\n      \"is_paused\": false,\n      \"state\": \"string\",\n      \"contact_groups\": [\n        \"string\",\n        \"string\"\n      ],\n      \"locations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb37d529-fad1-43b9-b6ca-7ae16ce0d051",
+          "name": "Create an HTTP check",
+          "request": {
+            "name": "Create an HTTP check",
+            "description": {
+              "content": "Creates a new HTTP(S) uptime check.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                "add-http",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"msp_address\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_port\": \"<integer>\",\n  \"msp_send_string\": \"<string>\",\n  \"msp_expect_string\": \"<string>\",\n  \"msp_encryption\": \"<string>\",\n  \"msp_threshold\": \"<integer>\",\n  \"msp_status_code\": \"<string>\",\n  \"msp_use_ip_version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffcd98fe-be69-4b22-9a89-5b2b90ece2cf",
+              "name": "The created check.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    "add-http",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"msp_address\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_port\": \"<integer>\",\n  \"msp_send_string\": \"<string>\",\n  \"msp_expect_string\": \"<string>\",\n  \"msp_encryption\": \"<string>\",\n  \"msp_threshold\": \"<integer>\",\n  \"msp_status_code\": \"<string>\",\n  \"msp_use_ip_version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": {},\n  \"results\": {\n    \"pk\": 698,\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"check_type\": \"HTTP\",\n    \"msp_address\": \"string\",\n    \"msp_interval\": 8917,\n    \"is_paused\": false,\n    \"state\": \"string\",\n    \"contact_groups\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d32c5815-6145-48fe-ae97-b7e2f7795611",
+          "name": "Create an API/transaction check",
+          "request": {
+            "name": "Create an API/transaction check",
+            "description": {
+              "content": "Creates a multi-step API (transaction) check.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                "add-api",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_script\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "594a0a5c-3fed-4877-a34f-d79a5cb2f975",
+              "name": "The created check.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    "add-api",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_script\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": {},\n  \"results\": {\n    \"pk\": 698,\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"check_type\": \"HTTP\",\n    \"msp_address\": \"string\",\n    \"msp_interval\": 8917,\n    \"is_paused\": false,\n    \"state\": \"string\",\n    \"contact_groups\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2dd8acf-0f0d-40a7-abe3-85f2f54c05c1",
+          "name": "Retrieve a check",
+          "request": {
+            "name": "Retrieve a check",
+            "description": {},
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4296a4fa-a67a-4ace-ae54-9df46e985ea1",
+              "name": "The requested check.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": {},\n  \"results\": {\n    \"pk\": 698,\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"check_type\": \"HTTP\",\n    \"msp_address\": \"string\",\n    \"msp_interval\": 8917,\n    \"is_paused\": false,\n    \"state\": \"string\",\n    \"contact_groups\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a443c60-8b36-4dcb-8fa1-b2792fd3537a",
+          "name": "Partially update a check",
+          "request": {
+            "name": "Partially update a check",
+            "description": {},
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"msp_address\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_port\": \"<integer>\",\n  \"msp_send_string\": \"<string>\",\n  \"msp_expect_string\": \"<string>\",\n  \"msp_encryption\": \"<string>\",\n  \"msp_threshold\": \"<integer>\",\n  \"msp_status_code\": \"<string>\",\n  \"msp_use_ip_version\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80012694-1e81-4731-a828-60deb7c5b2e2",
+              "name": "The updated check.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"msp_address\": \"<string>\",\n  \"contact_groups\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"locations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"msp_interval\": \"<integer>\",\n  \"msp_port\": \"<integer>\",\n  \"msp_send_string\": \"<string>\",\n  \"msp_expect_string\": \"<string>\",\n  \"msp_encryption\": \"<string>\",\n  \"msp_threshold\": \"<integer>\",\n  \"msp_status_code\": \"<string>\",\n  \"msp_use_ip_version\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": {},\n  \"results\": {\n    \"pk\": 698,\n    \"url\": \"string\",\n    \"name\": \"string\",\n    \"check_type\": \"HTTP\",\n    \"msp_address\": \"string\",\n    \"msp_interval\": 8917,\n    \"is_paused\": false,\n    \"state\": \"string\",\n    \"contact_groups\": [\n      \"string\",\n      \"string\"\n    ],\n    \"locations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92d24593-5968-4427-9987-45dc563a31af",
+          "name": "Delete a check",
+          "request": {
+            "name": "Delete a check",
+            "description": {},
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea2d7999-c229-4310-abf3-f029f6b3c259",
+              "name": "The check was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1834bc27-3009-4e5f-8f42-129b065de2e0",
+          "name": "Pause a check",
+          "request": {
+            "name": "Pause a check",
+            "description": {},
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                "pause",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1f2f1db-a9fc-4dd5-98f5-d77f5b3e8fac",
+              "name": "The check was paused.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    "pause",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "588b75b2-bbdd-4bd2-a8f3-f424ee3279c8",
+          "name": "Resume a check",
+          "request": {
+            "name": "Resume a check",
+            "description": {},
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                "resume",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42016529-a9e7-4a3d-bedf-d582d45649f9",
+              "name": "The check was resumed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    "resume",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35c835e5-0dcb-4314-b71c-6d5a608d1b2a",
+          "name": "Retrieve check statistics",
+          "request": {
+            "name": "Retrieve check statistics",
+            "description": {
+              "content": "Returns uptime and response-time statistics for a check.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                ":pk",
+                "stats",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3dbdf533-2ea2-449f-80d3-7ca984dbe0db",
+              "name": "Check statistics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":pk",
+                    "stats",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uptime.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "02475e0e-61fb-4a88-83df-aceaf153ff76",
+    "name": "Uptime.com REST Checks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.\n\nContact Support:\n Name: Uptime.com Support\n Email: support@uptime.com",
+      "type": "text/plain"
+    }
+  }
+}

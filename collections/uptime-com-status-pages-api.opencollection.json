@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uptime.com REST Checks Status Pages API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List status pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/"
+          },
+          "docs": "List status pages"
+        },
+        {
+          "info": {
+            "name": "Create a status page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/statuspages/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a status page"
+        },
+        {
+          "info": {
+            "name": "Retrieve a status page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Retrieve a status page"
+        },
+        {
+          "info": {
+            "name": "Update a status page",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://uptime.com/api/v1/statuspages/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a status page"
+        },
+        {
+          "info": {
+            "name": "Delete a status page",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://uptime.com/api/v1/statuspages/:pk/",
+            "params": [
+              {
+                "name": "pk",
+                "value": "",
+                "type": "path",
+                "description": "The primary key (numeric identifier) of the resource."
+              }
+            ]
+          },
+          "docs": "Delete a status page"
+        },
+        {
+          "info": {
+            "name": "List status page incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/incidents/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List status page incidents"
+        },
+        {
+          "info": {
+            "name": "Create a status page incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/incidents/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a status page incident"
+        },
+        {
+          "info": {
+            "name": "List status page components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/components/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List status page components"
+        },
+        {
+          "info": {
+            "name": "Create a status page component",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uptime.com/api/v1/statuspages/:statuspage_pk/components/",
+            "params": [
+              {
+                "name": "statuspage_pk",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a status page component"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

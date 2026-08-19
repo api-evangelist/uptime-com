@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "f1263006-f460-48d6-bc61-c297d5a882e4",
+      "name": "Contacts",
+      "description": {
+        "content": "Manage contact groups used for alert notifications.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7a71127-9931-4494-9b07-60755c7acef7",
+          "name": "List contact groups",
+          "request": {
+            "name": "List contact groups",
+            "description": {},
+            "url": {
+              "path": [
+                "contact-groups",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6c770360-5fc0-4bcc-918f-5c4fe5666d9f",
+              "name": "A list of contact groups.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-groups",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4e0a932-93f8-4299-9e54-c648c2fd61bc",
+          "name": "Create a contact group",
+          "request": {
+            "name": "Create a contact group",
+            "description": {},
+            "url": {
+              "path": [
+                "contact-groups",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "331e0a4b-c68b-4a04-a4aa-5cca93412e64",
+              "name": "The created contact group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-groups",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1410eba4-a418-4307-a223-29801178217a",
+          "name": "Retrieve a contact group",
+          "request": {
+            "name": "Retrieve a contact group",
+            "description": {},
+            "url": {
+              "path": [
+                "contact-groups",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49a8e9a8-f430-46c2-aa89-4b55c5b3b061",
+              "name": "The requested contact group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-groups",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98a121b4-e235-45d0-8047-9bd90efd1f67",
+          "name": "Update a contact group",
+          "request": {
+            "name": "Update a contact group",
+            "description": {},
+            "url": {
+              "path": [
+                "contact-groups",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7239d478-2b6e-430f-ba19-eafef387ef9e",
+              "name": "The updated contact group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-groups",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"pk\": \"<integer>\",\n  \"email_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"sms_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phonecall_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"integrations\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce379b36-14e8-4414-8903-21f0a2b6b0c5",
+          "name": "Delete a contact group",
+          "request": {
+            "name": "Delete a contact group",
+            "description": {},
+            "url": {
+              "path": [
+                "contact-groups",
+                ":pk",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "pk",
+                  "description": "(Required) The primary key (numeric identifier) of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c15284d8-19ee-4b02-8090-2f70d91eb482",
+              "name": "The contact group was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "contact-groups",
+                    ":pk",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "pk",
+                      "description": "(Required) The primary key (numeric identifier) of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uptime.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ddeac3e0-0a35-4ab4-a88f-1159b3f7fe8e",
+    "name": "Uptime.com REST Checks Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.\n\nContact Support:\n Name: Uptime.com Support\n Email: support@uptime.com",
+      "type": "text/plain"
+    }
+  }
+}
