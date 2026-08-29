@@ -7,6 +7,18 @@ description: Uptime.com is a website, application, and infrastructure monitoring
   status pages, and alerting from a global network of probe servers. Its REST API at
   https://uptime.com/api/v1 (Token authentication) lets customers programmatically manage
   checks, outages, SLA reports, status pages, contacts, integrations, and tags.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
