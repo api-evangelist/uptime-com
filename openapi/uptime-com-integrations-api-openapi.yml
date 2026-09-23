@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Uptime.com REST Checks Integrations API
+  title: Uptime.com REST Integrations API
   description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
   termsOfService: https://uptime.com/terms-of-use
   contact:

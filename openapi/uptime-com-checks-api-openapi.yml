@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Uptime.com REST Checks API
   description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
@@ -175,6 +175,45 @@ paths:
           description: Check statistics.
 components:
   schemas:
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
+    ApiCheck:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
     Check:
       type: object
       properties:
@@ -254,43 +293,6 @@ components:
           type: string
         msp_use_ip_version:
           type: string
-    CheckList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type: string
-          nullable: true
-        previous:
-          type: string
-          nullable: true
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Check'
-    ApiCheck:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        contact_groups:
-          type: array
-          items:
-            type: string
-        locations:
-          type: array
-          items:
-            type: string
-        msp_interval:
-          type: integer
-        msp_script:
-          type: array
-          description: Ordered list of transaction/API check steps.
-          items:
-            type: object
   parameters:
     Pk:
       name: pk

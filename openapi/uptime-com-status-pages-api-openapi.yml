@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Uptime.com REST Checks Status Pages API
+  title: Uptime.com REST Status Pages API
   description: The Uptime.com REST API provides programmatic access to the Uptime.com website, application, and infrastructure monitoring platform. It covers monitoring checks (HTTP, API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks), detected outages, SLA reports, status pages with components and incidents, contact groups, notification integrations, and check tags. All requests are authenticated with an API token passed in the Authorization header.
   termsOfService: https://uptime.com/terms-of-use
   contact:
@@ -177,7 +177,7 @@ components:
       schema:
         type: integer
   schemas:
-    StatusPageComponent:
+    StatusPage:
       type: object
       required:
       - name
@@ -186,16 +186,18 @@ components:
           type: integer
         name:
           type: string
-        description:
+        company_website:
           type: string
-        group:
-          type: boolean
-        is_group:
-          type: boolean
-        auto_status_down:
+        cname:
           type: string
-        service:
-          type: integer
+        allow_subscriptions:
+          type: boolean
+        is_public:
+          type: boolean
+        slug:
+          type: string
+        page_type:
+          type: string
     StatusPageIncident:
       type: object
       required:
@@ -218,7 +220,7 @@ components:
           type: array
           items:
             type: integer
-    StatusPage:
+    StatusPageComponent:
       type: object
       required:
       - name
@@ -227,18 +229,16 @@ components:
           type: integer
         name:
           type: string
-        company_website:
+        description:
           type: string
-        cname:
-          type: string
-        allow_subscriptions:
+        group:
           type: boolean
-        is_public:
+        is_group:
           type: boolean
-        slug:
+        auto_status_down:
           type: string
-        page_type:
-          type: string
+        service:
+          type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey
