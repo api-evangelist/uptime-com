@@ -1,0 +1,129 @@
+# Vendor facets — Uptime.com (status pages). Monitoring with public, private and customer-specific status
+# pages; on the Kin Score it touches one pointer check, status_page_present (6 pts), and earns it in full:
+# the hosts probed return a real 404 for unknown paths, so the pointer-liveness probe can prove the page.
+vendor: uptime-com
+name: Uptime.com
+website: https://uptime.com
+areas:
+- status-page
+registry_keys: []
+rubric_schema_version: 0.22.0
+generated: '2026-09-25'
+features_refreshed: '2026-09-25'
+basis: capability
+summary: >-
+  Uptime.com status pages move one Kin Score check, status_page_present (6 of 38 operational-transparency
+  points), once the provider declares the page as a StatusPage in apis.yml. The hosting clears the pointer-liveness
+  probe: uptime.com and status.uptime.com return a real 404 for nonsense paths, so the pointer grades
+  live. No vendor-registry key detects it. SLA reports, component uptime, maintenance and subscriber channels
+  are good practice that scores nothing.
+features:
+- id: hosted-status-page
+  name: Public, private and customer-specific status pages
+  description: >-
+    Status pages with component-level uptime, incident history, post-incident reports, SLA visibility,
+    scheduled maintenance and custom-domain hosting; private pages with SSO.
+  source: https://uptime.com/status-page
+  tier: unknown
+- id: soft-404-safe-hosting
+  name: Real 404 for unknown paths (measured)
+  description: >-
+    Probed 2026-09-25: uptime.com/billdesk.com and status.uptime.com return 200 for the page and a 404
+    (after redirect) for a nonsense path.
+  source: https://uptime.com/billdesk.com
+  tier: all
+- id: subscribers
+  name: Subscriptions via Slack, SMS, RSS, email and webhooks
+  description: Subscribers manage preferences across channels for incident and maintenance updates.
+  source: https://uptime.com/status-page
+  tier: unknown
+maps:
+- feature: hosted-status-page
+  check: status_page_present
+  layer: composite
+  credit: 1.0
+  provider_must: >-
+    Declare a public page in apis.yml as common[].type StatusPage; the pointer is liveness-graded and
+    grades live.
+  note: Binary check, cleared in full. The only check the status-page area touches.
+  catalog_pass_rate: 0.125
+  facet: operational_transparency
+  points: 6
+  baseline_pass_rate: 0.376
+earns_nothing:
+- feature: subscribers
+  check: webhooks_advertised
+  why: >-
+    Status-notification webhooks are the vendor's event stream about the page, not webhooks of the provider's
+    API.
+out_of_reach:
+  checks:
+  - change_log_present
+  - deprecation_policy
+  - roadmap_present
+  - rate_limits_documented
+  note: A status page publishes nothing about the API's changes, limits or deprecations.
+unscored_practice:
+- feature: hosted-status-page
+  why: SLA and component-level uptime reporting, post-incident reports; no check reads them.
+surface:
+  operational_transparency:
+    reachable: 6.0
+    total: 38
+  agent_readiness:
+    reachable: 0
+    total: 139
+hard_rule: >-
+  A model, not a score. Adopting this vendor changes a provider's Kin Score only when the provider publishes
+  the resulting artifacts on its own surface; nothing here writes a score, and no sponsorship or partnership
+  can.
+method: searched
+source:
+- https://uptime.com/billdesk.com
+- https://uptime.com/status-page
+measured:
+  cohort:
+    method: vendors-catalog.json detections (CNAME / header / URL shape / markup), never a name match
+    detected: 0
+    in_baseline: 0
+  control:
+    basis: providers earning contract_present + documentation_present + api_reference_present, minus the
+      cohort
+    n: 5216
+  metric: >-
+    cohort_pct / control_pct = mean share of the check's points earned (derived and platform credit weighted),
+    x100
+  measured_on: '2026-09-25'
+  status: 'not measurable: 0 detected customers clear the baseline (need 20)'
+simulation:
+  simulated_on: '2026-09-25'
+  rubric: 0.23.0
+  population: providers publishing a contract (contract_present earned), replayable exactly
+  providers: 8977
+  providers_unreplayable: 987
+  providers_moved: 6390
+  conditional_rows: excluded (they depend on what the API already does)
+  composite_lift:
+    median: 2.0
+    p75: 2.1
+    p90: 2.1
+    max: 2.1
+    mean_among_movers: 1.9
+  agent_readiness_lift:
+    median: 0.0
+    p75: 0.0
+    p90: 0.0
+    max: 0.0
+    mean_among_movers: 0.0
+  facet_lift_median_among_movers:
+    operational_transparency: 15.8
+  composite_band_moves:
+    thin -> developing: 598
+    developing -> strong: 172
+    emerging -> thin: 158
+    strong -> exemplar: 43
+    minimal -> emerging: 1
+  agent_readiness_band_moves: {}
+  method: >-
+    each provider's own kin/checks file, the vendor's maps at their stated credit, the scorer's composite
+    formula; from -> to, nothing written

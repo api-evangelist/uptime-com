@@ -180,6 +180,8 @@ apis:
   - type: OpenCollection
     url: collections/uptime-com.opencollection.json
 common:
+- type: VendorFacets
+  url: vendor-facets/uptime-com-vendor-facets.yml
 - type: AgenticAccess
   url: agentic-access/uptime-com-agentic-access.yml
 - type: DomainSecurity
