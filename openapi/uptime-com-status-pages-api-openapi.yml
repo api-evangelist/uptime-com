@@ -177,7 +177,7 @@ components:
       schema:
         type: integer
   schemas:
-    StatusPage:
+    StatusPageComponent:
       type: object
       required:
       - name
@@ -186,18 +186,16 @@ components:
           type: integer
         name:
           type: string
-        company_website:
+        description:
           type: string
-        cname:
-          type: string
-        allow_subscriptions:
+        group:
           type: boolean
-        is_public:
+        is_group:
           type: boolean
-        slug:
+        auto_status_down:
           type: string
-        page_type:
-          type: string
+        service:
+          type: integer
     StatusPageIncident:
       type: object
       required:
@@ -220,7 +218,7 @@ components:
           type: array
           items:
             type: integer
-    StatusPageComponent:
+    StatusPage:
       type: object
       required:
       - name
@@ -229,16 +227,18 @@ components:
           type: integer
         name:
           type: string
-        description:
+        company_website:
           type: string
-        group:
-          type: boolean
-        is_group:
-          type: boolean
-        auto_status_down:
+        cname:
           type: string
-        service:
-          type: integer
+        allow_subscriptions:
+          type: boolean
+        is_public:
+          type: boolean
+        slug:
+          type: string
+        page_type:
+          type: string
   securitySchemes:
     tokenAuth:
       type: apiKey

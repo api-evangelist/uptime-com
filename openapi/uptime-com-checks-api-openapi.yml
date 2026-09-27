@@ -174,85 +174,15 @@ paths:
         '200':
           description: Check statistics.
 components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
   schemas:
-    CheckList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Check'
-    ApiCheck:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        contact_groups:
-          type: array
-          items:
-            type: string
-        locations:
-          type: array
-          items:
-            type: string
-        msp_interval:
-          type: integer
-        msp_script:
-          type: array
-          description: Ordered list of transaction/API check steps.
-          items:
-            type: object
-    Check:
-      type: object
-      properties:
-        pk:
-          type: integer
-        url:
-          type: string
-        name:
-          type: string
-        check_type:
-          type: string
-          example: HTTP
-        msp_address:
-          type: string
-        msp_interval:
-          type: integer
-        is_paused:
-          type: boolean
-        state:
-          type: string
-        contact_groups:
-          type: array
-          items:
-            type: string
-        locations:
-          type: array
-          items:
-            type: string
-        tags:
-          type: array
-          items:
-            type: string
-    CheckEnvelope:
-      type: object
-      properties:
-        messages:
-          type: object
-        results:
-          $ref: '#/components/schemas/Check'
     HttpCheck:
       type: object
       required:
@@ -293,14 +223,84 @@ components:
           type: string
         msp_use_ip_version:
           type: string
-  parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The primary key (numeric identifier) of the resource.
-      schema:
-        type: integer
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
+    Check:
+      type: object
+      properties:
+        pk:
+          type: integer
+        url:
+          type: string
+        name:
+          type: string
+        check_type:
+          type: string
+          example: HTTP
+        msp_address:
+          type: string
+        msp_interval:
+          type: integer
+        is_paused:
+          type: boolean
+        state:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+    CheckEnvelope:
+      type: object
+      properties:
+        messages:
+          type: object
+        results:
+          $ref: '#/components/schemas/Check'
+    ApiCheck:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
   securitySchemes:
     tokenAuth:
       type: apiKey
