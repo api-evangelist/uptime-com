@@ -90,14 +90,6 @@ paths:
         '204':
           description: The SLA report was deleted.
 components:
-  parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The primary key (numeric identifier) of the resource.
-      schema:
-        type: integer
   schemas:
     SlaReport:
       type: object
@@ -125,6 +117,14 @@ components:
           type: boolean
         is_private:
           type: boolean
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey

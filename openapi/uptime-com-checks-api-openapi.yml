@@ -174,15 +174,29 @@ paths:
         '200':
           description: Check statistics.
 components:
-  parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The primary key (numeric identifier) of the resource.
-      schema:
-        type: integer
   schemas:
+    ApiCheck:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        contact_groups:
+          type: array
+          items:
+            type: string
+        locations:
+          type: array
+          items:
+            type: string
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
     HttpCheck:
       type: object
       required:
@@ -279,28 +293,14 @@ components:
           type: object
         results:
           $ref: '#/components/schemas/Check'
-    ApiCheck:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        contact_groups:
-          type: array
-          items:
-            type: string
-        locations:
-          type: array
-          items:
-            type: string
-        msp_interval:
-          type: integer
-        msp_script:
-          type: array
-          description: Ordered list of transaction/API check steps.
-          items:
-            type: object
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey
