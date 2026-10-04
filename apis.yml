@@ -180,6 +180,9 @@ apis:
   - type: OpenCollection
     url: collections/uptime-com.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/uptime-com-capability-edges.yml
+  name: Uptime.com Business Capability Map
 - type: VendorFacets
   url: vendor-facets/uptime-com-vendor-facets.yml
 - type: AgenticAccess
