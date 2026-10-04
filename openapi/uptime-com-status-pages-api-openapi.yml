@@ -169,27 +169,6 @@ paths:
                 $ref: '#/components/schemas/StatusPageComponent'
 components:
   schemas:
-    StatusPage:
-      type: object
-      required:
-      - name
-      properties:
-        pk:
-          type: integer
-        name:
-          type: string
-        company_website:
-          type: string
-        cname:
-          type: string
-        allow_subscriptions:
-          type: boolean
-        is_public:
-          type: boolean
-        slug:
-          type: string
-        page_type:
-          type: string
     StatusPageIncident:
       type: object
       required:
@@ -212,6 +191,27 @@ components:
           type: array
           items:
             type: integer
+    StatusPage:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        company_website:
+          type: string
+        cname:
+          type: string
+        allow_subscriptions:
+          type: boolean
+        is_public:
+          type: boolean
+        slug:
+          type: string
+        page_type:
+          type: string
     StatusPageComponent:
       type: object
       required:

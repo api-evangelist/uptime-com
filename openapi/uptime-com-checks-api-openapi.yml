@@ -175,6 +175,13 @@ paths:
           description: Check statistics.
 components:
   schemas:
+    CheckEnvelope:
+      type: object
+      properties:
+        messages:
+          type: object
+        results:
+          $ref: '#/components/schemas/Check'
     ApiCheck:
       type: object
       required:
@@ -197,6 +204,23 @@ components:
           description: Ordered list of transaction/API check steps.
           items:
             type: object
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
     HttpCheck:
       type: object
       required:
@@ -237,23 +261,6 @@ components:
           type: string
         msp_use_ip_version:
           type: string
-    CheckList:
-      type: object
-      properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Check'
     Check:
       type: object
       properties:
@@ -286,13 +293,6 @@ components:
           type: array
           items:
             type: string
-    CheckEnvelope:
-      type: object
-      properties:
-        messages:
-          type: object
-        results:
-          $ref: '#/components/schemas/Check'
   parameters:
     Pk:
       name: pk
