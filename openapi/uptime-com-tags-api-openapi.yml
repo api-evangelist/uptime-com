@@ -95,15 +95,6 @@ paths:
           description: The tag was deleted.
 components:
   schemas:
-    TagList:
-      type: object
-      properties:
-        count:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
     Tag:
       type: object
       required:
@@ -118,6 +109,15 @@ components:
           example: '#33cccc'
         url:
           type: string
+    TagList:
+      type: object
+      properties:
+        count:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
   parameters:
     Pk:
       name: pk

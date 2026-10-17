@@ -175,19 +175,25 @@ paths:
           description: Check statistics.
 components:
   schemas:
-    CheckEnvelope:
+    Check:
       type: object
       properties:
-        messages:
-          type: object
-        results:
-          $ref: '#/components/schemas/Check'
-    ApiCheck:
-      type: object
-      required:
-      - name
-      properties:
+        pk:
+          type: integer
+        url:
+          type: string
         name:
+          type: string
+        check_type:
+          type: string
+          example: HTTP
+        msp_address:
+          type: string
+        msp_interval:
+          type: integer
+        is_paused:
+          type: boolean
+        state:
           type: string
         contact_groups:
           type: array
@@ -197,30 +203,17 @@ components:
           type: array
           items:
             type: string
-        msp_interval:
-          type: integer
-        msp_script:
+        tags:
           type: array
-          description: Ordered list of transaction/API check steps.
           items:
-            type: object
-    CheckList:
+            type: string
+    CheckEnvelope:
       type: object
       properties:
-        count:
-          type: integer
-        next:
-          type:
-          - string
-          - 'null'
-        previous:
-          type:
-          - string
-          - 'null'
+        messages:
+          type: object
         results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Check'
+          $ref: '#/components/schemas/Check'
     HttpCheck:
       type: object
       required:
@@ -261,25 +254,12 @@ components:
           type: string
         msp_use_ip_version:
           type: string
-    Check:
+    ApiCheck:
       type: object
+      required:
+      - name
       properties:
-        pk:
-          type: integer
-        url:
-          type: string
         name:
-          type: string
-        check_type:
-          type: string
-          example: HTTP
-        msp_address:
-          type: string
-        msp_interval:
-          type: integer
-        is_paused:
-          type: boolean
-        state:
           type: string
         contact_groups:
           type: array
@@ -289,10 +269,30 @@ components:
           type: array
           items:
             type: string
-        tags:
+        msp_interval:
+          type: integer
+        msp_script:
+          type: array
+          description: Ordered list of transaction/API check steps.
+          items:
+            type: object
+    CheckList:
+      type: object
+      properties:
+        count:
+          type: integer
+        next:
+          type:
+          - string
+          - 'null'
+        previous:
+          type:
+          - string
+          - 'null'
+        results:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/Check'
   parameters:
     Pk:
       name: pk

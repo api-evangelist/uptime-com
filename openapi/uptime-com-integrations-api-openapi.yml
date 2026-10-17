@@ -70,6 +70,14 @@ paths:
         '204':
           description: The integration was deleted.
 components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
   schemas:
     Integration:
       type: object
@@ -90,14 +98,6 @@ components:
             type: string
         url:
           type: string
-  parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The primary key (numeric identifier) of the resource.
-      schema:
-        type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey

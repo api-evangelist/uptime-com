@@ -90,6 +90,14 @@ paths:
         '204':
           description: The contact group was deleted.
 components:
+  parameters:
+    Pk:
+      name: pk
+      in: path
+      required: true
+      description: The primary key (numeric identifier) of the resource.
+      schema:
+        type: integer
   schemas:
     ContactGroup:
       type: object
@@ -116,14 +124,6 @@ components:
           type: array
           items:
             type: integer
-  parameters:
-    Pk:
-      name: pk
-      in: path
-      required: true
-      description: The primary key (numeric identifier) of the resource.
-      schema:
-        type: integer
   securitySchemes:
     tokenAuth:
       type: apiKey

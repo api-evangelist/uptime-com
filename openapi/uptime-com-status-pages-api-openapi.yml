@@ -169,6 +169,25 @@ paths:
                 $ref: '#/components/schemas/StatusPageComponent'
 components:
   schemas:
+    StatusPageComponent:
+      type: object
+      required:
+      - name
+      properties:
+        pk:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        group:
+          type: boolean
+        is_group:
+          type: boolean
+        auto_status_down:
+          type: string
+        service:
+          type: integer
     StatusPageIncident:
       type: object
       required:
@@ -212,25 +231,6 @@ components:
           type: string
         page_type:
           type: string
-    StatusPageComponent:
-      type: object
-      required:
-      - name
-      properties:
-        pk:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        group:
-          type: boolean
-        is_group:
-          type: boolean
-        auto_status_down:
-          type: string
-        service:
-          type: integer
   parameters:
     Pk:
       name: pk
