@@ -1,4 +1,4 @@
-# Uptime.com (uptime-com)
+# Uptime.com
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,160 +66,128 @@
 
 Uptime.com is a website, application, and infrastructure monitoring platform providing uptime checks, transaction and API monitoring, page speed checks, SLA reporting, status pages, and alerting from a global network of probe servers. Its REST API at https://uptime.com/api/v1 (Token authentication) lets customers programmatically manage checks, outages, SLA reports, status pages, contacts, integrations, and tags.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/uptime-com/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/uptime-com/refs/heads/main/apis.yml)
+**Areas:** Monitoring · Uptime · Website Monitoring · Status Pages · SLA
 
-## Tags
+## Uptime.com on APIs.io
 
-- Monitoring
-- Uptime
-- Website Monitoring
-- Status Pages
-- SLA
+Everything profiled for Uptime.com is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/uptime-com/](https://apis.io/providers/uptime-com/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Uptime.com Checks API](https://apis.io/apis/uptime-com/uptime-com-checks-api/) — Create, list, update, pause, resume, and delete monitoring checks.
+- [Uptime.com Contacts API](https://apis.io/apis/uptime-com/uptime-com-contacts-api/) — Manage contact groups used for alert notifications.
+- [Uptime.com Integrations API](https://apis.io/apis/uptime-com/uptime-com-integrations-api/) — Manage notification integrations.
+- [Uptime.com Outages API](https://apis.io/apis/uptime-com/uptime-com-outages-api/) — List and retrieve detected outage records.
+- [Uptime.com SLA Reports API](https://apis.io/apis/uptime-com/uptime-com-sla-reports-api/) — Create, list, update, and delete SLA reports.
+- [Uptime.com Status Pages API](https://apis.io/apis/uptime-com/uptime-com-status-pages-api/) — Manage status pages, components, and incidents.
+- [Uptime.com Tags API](https://apis.io/apis/uptime-com/uptime-com-tags-api/) — Manage color-coded check tags.
 
-## APIs
+### Published properties
 
-### Uptime.com Checks & Monitors API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, list, retrieve, update, pause, resume, and delete monitoring checks including HTTP(S), API/transaction, DNS, TCP, SMTP, SSH, ping, blacklist, malware, and group checks, plus probe-server location management.
+#### Agentic access (1)
 
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Uptime Com Agentic Access](https://apis.io/agentic-access/uptime-com/uptime-com-agentic-access/)
 
-- Checks
-- Monitors
-- Uptime
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Uptime.com REST API](https://apis.io/collections/uptime-com/open-uptime-com/)
+- [Uptime.com REST Checks API](https://apis.io/collections/uptime-com/open-uptime-com-checks-api/)
+- [Uptime.com REST Checks Contacts API](https://apis.io/collections/uptime-com/open-uptime-com-contacts-api/)
+- [Uptime.com REST Checks Integrations API](https://apis.io/collections/uptime-com/open-uptime-com-integrations-api/)
+- [Uptime.com REST Checks Outages API](https://apis.io/collections/uptime-com/open-uptime-com-outages-api/)
+- [Uptime.com REST Checks SLA Reports API](https://apis.io/collections/uptime-com/open-uptime-com-sla-reports-api/)
+- [Uptime.com REST Checks Status Pages API](https://apis.io/collections/uptime-com/open-uptime-com-status-pages-api/)
+- [Uptime.com REST Checks Tags API](https://apis.io/collections/uptime-com/open-uptime-com-tags-api/)
 
-### Uptime.com Outages API
+#### Security (2)
 
-List and retrieve detected outage records produced by checks, including start/end timestamps, duration, the originating check, and resolution state.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
+- [Uptime Com Authentication](https://apis.io/security/uptime-com/uptime-com-authentication/)
+- [Uptime Com Domain Security](https://apis.io/security/uptime-com/uptime-com-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Outages
-- Incidents
-- Downtime
+Published plans, tiers and prices.
 
-#### Properties
+- [Uptime Com Plans Pricing](https://apis.io/plans/uptime-com/uptime-com-plans-pricing/)
 
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Uptime.com SLA Reports API
+Published request limits.
 
-Create, list, retrieve, update, and delete SLA reports that summarize uptime, response time, and outage performance across selected checks and tags over a default or custom reporting period.
+- [Uptime Com Rate Limits](https://apis.io/rate-limits/uptime-com/uptime-com-rate-limits/)
 
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- SLA
-- Reports
-- Reporting
+- [Uptime Com Finops](https://apis.io/finops/uptime-com/uptime-com-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Uptime.com Status Pages API
-
-Create, list, retrieve, update, and delete public and private status pages along with their components and incidents for communicating service health to users.
-
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
-
-#### Tags
-
-- Status Pages
-- Incidents
-- Components
-
-#### Properties
-
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Uptime.com Contacts & Integrations API
-
-Manage contact groups (email, SMS, voice, on-call schedules) and notification integrations (Slack, PagerDuty, Opsgenie, webhooks, and more) used to route check and outage alerts.
-
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
-
-#### Tags
-
-- Contacts
-- Integrations
-- Alerting
-
-#### Properties
-
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Uptime.com Tags API
-
-Create, list, retrieve, update, and delete color-coded check tags used to group and filter checks, SLA reports, and status pages across the account.
-
-- **Human URL:** [https://uptime.com/api/v1/docs/](https://uptime.com/api/v1/docs/)
-- **Base URL:** `https://uptime.com/api/v1`
-
-#### Tags
-
-- Tags
-- Labels
-- Organization
-
-#### Properties
-
-- [Documentation](https://support.uptime.com/hc/en-us/articles/360009681280-Getting-Started-with-the-Uptime-com-REST-API)
-- [API Reference](https://uptime.com/api/v1/docs/)
-- [OpenAPI](openapi/uptime-com-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/uptime-com.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/uptime-com.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/uptime-com)
-- [LinkedIn](https://www.linkedin.com/company/uptime-com)
 - [Website](https://uptime.com/)
 - [Documentation](https://uptime.com/api/v1/docs/)
-- [Plans](plans/uptime-com-plans-pricing.yml)
-- [Rate Limits](rate-limits/uptime-com-rate-limits.yml)
-- [Fin Ops](finops/uptime-com-finops.yml)
+- [Blog](https://uptime.com/blog/feed/)
+- [GitHub](https://github.com/uptime-com)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/uptime-com/](https://apis.io/providers/uptime-com/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Uptime.com: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/uptime-com/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
